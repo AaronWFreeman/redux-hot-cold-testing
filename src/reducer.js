@@ -7,7 +7,7 @@ const initialState = {
     correctAnswer: Math.round(Math.random() * 100) + 1
 };
 
-export default (state = initialState, action) => {
+export const gameReducer = (state = initialState, action) => {
     if (action.type === RESTART_GAME) {
         return Object.assign({}, state, {
             guesses: [],
@@ -57,9 +57,7 @@ export default (state = initialState, action) => {
         // pluralize the nouns in this aural update.
         const pluralize = guesses.length !== 1;
 
-        let auralStatus = `Here's the status of the game right now: ${feedback} You've made ${guesses.length} ${pluralize
-            ? 'guesses'
-            : 'guess'}.`;
+        let auralStatus = `Here's the status of the game right now: ${feedback} You've made ${guesses.length} ${pluralize ? 'guesses' : 'guess'}.`;
 
         if (guesses.length > 0) {
             auralStatus += ` ${pluralize
